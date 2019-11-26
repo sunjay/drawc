@@ -41,9 +41,14 @@ fn generate_move(
     target_pos: Vec2,
 ) -> io::Result<Vec2> {
     let target_dir = target_pos - current_pos;
+    // The returned angle is always positive and between 0 and 180 degrees
     let angle = current_dir.angle_between(target_dir).to_degrees();
 
-    writeln!(output_file, "    turtle.left({:.5});", angle)?;
+    // Based on the source code for Unity's SignedAngle function:
+    // https://github.com/Unity-Technologies/UnityCsReference/blob/3e4f048b34fc84f570e1f6779ad6b9df25bd96c9/Runtime/Export/Math/Vector2.cs#L190-L196
+    let sign = (current_dir.x * target_dir.y - current_dir.y * target_dir.x).signum();
+
+    writeln!(output_file, "    turtle.left({:.5});", sign*angle)?;
     writeln!(output_file, "    turtle.forward({:.5});", target_dir.magnitude())?;
 
     Ok(target_dir)
