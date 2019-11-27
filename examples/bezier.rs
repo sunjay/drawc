@@ -4,6 +4,7 @@
 
 type Vec2 = vek::Vec2<f64>;
 
+/// Represents a cubic bezier curve
 struct CubicBezier {
     point0: Vec2,
     point1: Vec2,

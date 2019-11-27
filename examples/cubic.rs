@@ -1,6 +1,6 @@
 //! Generates and prints points along a cubic polynomial a + bx + cx^2 + dx^3
 
-/// Represenxs a cubic polynomial a + bx + cx^2 + dx^3
+/// Represents a cubic polynomial a + bx + cx^2 + dx^3
 pub struct Cubic {
     a: f64,
     b: f64,

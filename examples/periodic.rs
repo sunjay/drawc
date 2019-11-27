@@ -1,6 +1,6 @@
 //! Generates and prints points along a periodic function
 
-/// Represenxs a periodic function: y = a*sin(b*(x - c)) + d
+/// Represents a periodic function: y = a*sin(b*(x - c)) + d
 pub struct Periodic {
     a: f64,
     b: f64,
