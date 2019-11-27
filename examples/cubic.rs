@@ -26,7 +26,7 @@ fn main() {
 
     // The minimum and maximum values along the x axis
     let min_x = -3.0;
-    let max_x = 4.0;
+    let max_x = 3.5;
 
     // The number of points to generate
     let samples = 100;
