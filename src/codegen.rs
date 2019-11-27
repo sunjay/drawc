@@ -48,7 +48,10 @@ fn generate_move(
     // https://github.com/Unity-Technologies/UnityCsReference/blob/3e4f048b34fc84f570e1f6779ad6b9df25bd96c9/Runtime/Export/Math/Vector2.cs#L190-L196
     let sign = (current_dir.x * target_dir.y - current_dir.y * target_dir.x).signum();
 
-    writeln!(output_file, "    turtle.left({:.5});", sign*angle)?;
+    // Angle can be NaN if current_dir and target_dir are colinear
+    if !angle.is_nan() {
+        writeln!(output_file, "    turtle.left({:.5});", sign*angle)?;
+    }
     writeln!(output_file, "    turtle.forward({:.5});", target_dir.magnitude())?;
 
     Ok(target_dir)
